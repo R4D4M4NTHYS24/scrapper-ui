@@ -37,19 +37,24 @@ export default function Table() {
     setSearchValue(event.target.value);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      fetchData();
+    }
+  };
+
   const handleSearch = () => {
     fetchData();
   };
 
   return (
     <div className="table-container">
-      {" "}
-      {/* Aplica estilos al contenedor principal */}
       <div className="search-container">
         <input
           type="text"
           value={searchValue}
           onChange={handleSearchChange}
+          onKeyPress={handleKeyPress} // Agrega el evento onKeyPress para detectar la tecla Enter
           placeholder="Buscar..."
           className="search-input"
         />
